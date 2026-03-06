@@ -27,4 +27,4 @@ jobs:
 
 Commit message:
 ```
-ci: add GitHub Actions test pipeline
+ci: fix yaml syntax

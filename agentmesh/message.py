@@ -5,11 +5,6 @@ from agentmesh.identity import AgentIdentity
 
 
 class AgentMessage:
-    """
-    A signed message between two AgentMesh agents.
-    Follows RFC-001 envelope format.
-    """
-
     def __init__(self, from_agent: AgentIdentity, to_uri: str, intent: str):
         self.id = f"msg_{uuid.uuid4().hex[:8]}"
         self.from_agent = from_agent
@@ -49,11 +44,4 @@ class AgentMessage:
         }
 
     def __repr__(self):
-        return f"<AgentMessage id={self.id} from={self.from_agent.uri}>"
-```
-
----
-
-Commit message:
-```
-feat: add AgentMessage with signing — RFC-001
+        return f"<AgentMessage id={self.id}>"

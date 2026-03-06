@@ -1,8 +1,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="agentmesh",
+    name="agentmesh-protocol",
     version="0.1.0",
+    description="The communication protocol for AI agents",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/agentmesh-protocol/agentmesh-sdk",
+    license="MIT",
     packages=find_packages(),
     install_requires=[
         "cryptography>=41.0.0",

@@ -4,11 +4,6 @@ from cryptography.hazmat.primitives import serialization
 
 
 class AgentIdentity:
-    """
-    Cryptographic identity for an AgentMesh agent.
-    Generates an Ed25519 keypair and a unique agent:// URI.
-    """
-
     def __init__(self, name: str):
         self.name = name
         self._private_key = Ed25519PrivateKey.generate()
@@ -32,11 +27,3 @@ class AgentIdentity:
             return True
         except Exception:
             return False
-
-    def __repr__(self):
-        return f"<AgentIdentity uri={self.uri}>"
-```
-
-Commit message:
-```
-feat: add AgentIdentity with Ed25519 keypair

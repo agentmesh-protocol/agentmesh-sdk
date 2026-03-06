@@ -25,6 +25,14 @@ class GatewayClient:
         response.raise_for_status()
         return response.json()
 
+    def find(self, capability: str) -> dict:
+        response = self.session.get(
+            f"{self.gateway_url}/v1/registry",
+            params={"capability": capability}
+        )
+        response.raise_for_status()
+        return response.json()
+
     def send(self, from_uri: str, to_uri: str, intent: str, signature: str = None) -> dict:
         response = self.session.post(
             f"{self.gateway_url}/v1/send",

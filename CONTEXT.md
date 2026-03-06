@@ -10,7 +10,7 @@ Das TCP/IP fuer AI-Agent-Kommunikation. Ein offenes Protokoll das definiert wie 
 
 - agentmesh-spec: Protokoll-Dokumente (RFCs)
 - agentmesh-sdk: Python SDK
-- agentmesh-gateway: Cloudflare Gateway (noch leer)
+- agentmesh-gateway: Cloudflare Worker — live unter agentmesh-gateway.agentmesh-protocol.workers.dev
 
 ## Aktueller Stand
 
@@ -22,8 +22,18 @@ Fertig:
 - Agent send, verify, inbox
 - AgentRegistry register, find, update_trust
 - LLMAgent mit echter Claude API
+- GatewayClient — SDK verbunden mit Cloudflare
 - 15 Tests alle gruen
 - GitHub Actions CI Pipeline gruen
+- Cloudflare Gateway live im Internet
+
+## Gateway
+
+URL: https://agentmesh-gateway.agentmesh-protocol.workers.dev
+Endpoints:
+- GET  /health
+- POST /v1/send
+- POST /v1/registry
 
 ## SDK Struktur
 
@@ -33,19 +43,22 @@ agentmesh/message.py
 agentmesh/agent.py
 agentmesh/registry.py
 agentmesh/llm_agent.py
+agentmesh/gateway.py
 tests/test_agent.py
 tests/test_registry.py
 demo.py
 demo_llm.py
+demo_gateway.py
 setup.py
 .github/workflows/ci.yml
 
 ## Naechste Schritte
 
-1. Cloudflare Gateway - Agents ueber Internet verbinden
+1. KV Storage - Registry persistent in Cloudflare speichern
 2. RFC-003 Trust Score Verifikation
 3. LangChain Adapter
-4. Twitter/X Build in Public
+4. Twitter/X Build in Public starten
+5. requests zu setup.py hinzufuegen
 
 ## Wichtige Regeln
 
@@ -53,3 +66,4 @@ setup.py
 - Nie per GitHub Web-Editor fuer Code
 - API Keys nur als GitHub Secret oder export in Terminal
 - Immer: git add, commit, push, Actions Tab pruefen
+- requests Library ist installiert aber noch nicht in setup.py

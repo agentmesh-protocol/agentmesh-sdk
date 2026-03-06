@@ -61,8 +61,3 @@ def test_message_to_dict_has_required_fields():
     assert "from" in d
     assert "to" in d
     assert "signature" in d
-```
-
-Commit message:
-```
-test: add agent unit tests

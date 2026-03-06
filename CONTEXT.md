@@ -17,30 +17,30 @@ Das TCP/IP fuer AI-Agent-Kommunikation. Ein offenes Protokoll das definiert wie 
 Fertig:
 - RFC-001 Nachrichtenformat
 - RFC-002 Agent Registry
+- RFC-003 Trust Score Verification
 - AgentIdentity mit Ed25519 Keypair
 - AgentMessage erstellen, signieren, verifizieren
 - Agent send, verify, inbox
 - AgentRegistry register, find, update_trust
+- TrustManager RFC-003 Implementierung
 - LLMAgent mit echter Claude API
 - GatewayClient SDK verbunden mit Cloudflare
 - KV Storage persistent in Cloudflare
 - LangChain Adapter
 - AutoGen Adapter
 - CrewAI Adapter
-- Professionelles README mit Badges und Quickstart
+- Professionelles VC-style README
 - 15 Tests alle gruen
 - GitHub Actions CI Pipeline gruen
-- Cloudflare Gateway live im Internet
-- Alle Dependencies sauber in setup.py
+- GitHub Actions Publish Pipeline gruen
+- Cloudflare Gateway live im Internet mit 4 Endpoints
+- pip install agentmesh-protocol auf PyPI live (v0.1.1)
 
-## Unterstuetzte Frameworks
+## PyPI
 
-| Framework | Adapter | Klasse |
-|-----------|---------|--------|
-| Nativer AgentMesh | eingebaut | Agent, LLMAgent |
-| LangChain | LangChainAdapter | agentmesh.adapters |
-| AutoGen | AutoGenAdapter | agentmesh.adapters |
-| CrewAI | CrewAIAdapter | agentmesh.adapters |
+URL: https://pypi.org/project/agentmesh-protocol/
+Install: pip install agentmesh-protocol
+Version: 0.1.1
 
 ## Gateway
 
@@ -50,6 +50,7 @@ Endpoints:
 - POST /v1/registry   -> Agent registrieren (persistent in KV)
 - GET  /v1/registry   -> Agents suchen nach capability
 - POST /v1/send       -> Nachricht senden
+- POST /v1/trust      -> Trust Score updaten
 
 ## SDK Struktur
 
@@ -60,6 +61,7 @@ agentmesh/agent.py
 agentmesh/registry.py
 agentmesh/llm_agent.py
 agentmesh/gateway.py
+agentmesh/trust.py
 agentmesh/adapters/__init__.py
 agentmesh/adapters/langchain.py
 agentmesh/adapters/autogen.py
@@ -74,24 +76,22 @@ demo_autogen.py
 demo_crewai.py
 setup.py
 README.md
+CONTEXT.md
 .github/workflows/ci.yml
+.github/workflows/publish.yml
 
-## Dependencies
+## Unterstuetzte Frameworks
 
-cryptography>=41.0.0
-requests>=2.31.0
-anthropic>=0.18.0
-langchain>=0.1.0
-langchain-anthropic>=0.1.0
-langchain-core>=0.1.0
-pyautogen
-crewai
+- Nativer AgentMesh: Agent, LLMAgent
+- LangChain: LangChainAdapter
+- AutoGen: AutoGenAdapter
+- CrewAI: CrewAIAdapter
 
 ## Naechste Schritte
 
-1. Twitter/X Build in Public starten
-2. RFC-003 Trust Score Verifikation
-3. pip install agentmesh auf PyPI veroeffentlichen
+1. Auf Twitter/X posten - Build in Public starten
+2. RFC-004 Agent-to-Agent HTTP Transport
+3. JavaScript/TypeScript SDK
 4. Erste externe Contributors gewinnen
 
 ## Wichtige Regeln
@@ -99,5 +99,6 @@ crewai
 - Python-Dateien NUR per Terminal mit cat EOF erstellen
 - Nie per GitHub Web-Editor fuer Code
 - Anthropic API Key: sk-ant-api03-...
-- Cloudflare Token muss manchmal direkt per export gesetzt werden
+- Cloudflare Token direkt per export setzen wenn noetig
 - Immer: git add, commit, push, Actions Tab pruefen
+- Neue PyPI Releases: neue GitHub Release erstellen -> triggert publish.yml

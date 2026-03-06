@@ -3,11 +3,6 @@ from agentmesh.message import AgentMessage
 
 
 class Agent:
-    """
-    Main AgentMesh agent class.
-    Create, send, and verify messages between agents.
-    """
-
     def __init__(self, name: str):
         self.identity = AgentIdentity(name)
         self.name = name
@@ -37,10 +32,3 @@ class Agent:
 
     def __repr__(self):
         return f"<Agent name={self.name} uri={self.uri}>"
-```
-
----
-
-Commit message:
-```
-feat: add Agent class with send and verify

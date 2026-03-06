@@ -8,6 +8,9 @@ setup(
         "cryptography>=41.0.0",
         "requests>=2.31.0",
         "anthropic>=0.18.0",
+        "langchain>=0.1.0",
+        "langchain-anthropic>=0.1.0",
+        "langchain-core>=0.1.0",
     ],
     python_requires=">=3.9",
 )

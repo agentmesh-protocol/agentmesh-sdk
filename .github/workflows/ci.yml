@@ -23,8 +23,3 @@ jobs:
 
       - name: Run tests
         run: pip install pytest && pytest tests/ -v
-```
-
-Commit message:
-```
-ci: fix yaml syntax

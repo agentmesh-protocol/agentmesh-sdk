@@ -9,8 +9,3 @@ setup(
     ],
     python_requires=">=3.9",
 )
-```
-
-Commit message:
-```
-fix: remove markdown artifacts from setup.py

@@ -24,10 +24,11 @@ Fertig:
 - LLMAgent mit echter Claude API
 - GatewayClient SDK verbunden mit Cloudflare
 - KV Storage persistent in Cloudflare
+- LangChain Adapter fuer bestehende Agents
 - 15 Tests alle gruen
 - GitHub Actions CI Pipeline gruen
 - Cloudflare Gateway live im Internet
-- Dependencies sauber in setup.py
+- Alle Dependencies sauber in setup.py
 
 ## Gateway
 
@@ -41,31 +42,43 @@ Endpoints:
 ## SDK Struktur
 
 agentmesh/__init__.py
-agentmesh/identity.py     - AgentIdentity, Ed25519
-agentmesh/message.py      - AgentMessage, RFC-001
-agentmesh/agent.py        - Agent Klasse
-agentmesh/registry.py     - AgentRegistry, RFC-002
-agentmesh/llm_agent.py    - LLMAgent mit Claude API
-agentmesh/gateway.py      - GatewayClient HTTP
+agentmesh/identity.py          - AgentIdentity, Ed25519
+agentmesh/message.py           - AgentMessage, RFC-001
+agentmesh/agent.py             - Agent Klasse
+agentmesh/registry.py          - AgentRegistry, RFC-002
+agentmesh/llm_agent.py         - LLMAgent mit Claude API
+agentmesh/gateway.py           - GatewayClient HTTP
+agentmesh/adapters/__init__.py
+agentmesh/adapters/langchain.py - LangChain Adapter
 tests/test_agent.py
 tests/test_registry.py
-demo.py                   - lokale Demo
-demo_llm.py               - Claude API Demo
-demo_gateway.py           - Gateway Demo
+demo.py                        - lokale Demo
+demo_llm.py                    - Claude API Demo
+demo_gateway.py                - Gateway Demo
+demo_langchain.py              - LangChain Demo
 setup.py
 .github/workflows/ci.yml
 
+## Dependencies
+
+cryptography>=41.0.0
+requests>=2.31.0
+anthropic>=0.18.0
+langchain>=0.1.0
+langchain-anthropic>=0.1.0
+langchain-core>=0.1.0
+
 ## Naechste Schritte
 
-1. LangChain Adapter - bestehende Agents einbinden
+1. README ausbauen - Projekt professionell praesentieren
 2. RFC-003 Trust Score Verifikation
 3. Twitter/X Build in Public starten
-4. README ausbauen - Projekt professionell praesentieren
+4. AutoGen Adapter - weitere Frameworks einbinden
 
 ## Wichtige Regeln
 
 - Python-Dateien NUR per Terminal mit cat EOF erstellen
 - Nie per GitHub Web-Editor fuer Code
-- API Keys nur als GitHub Secret oder export in Terminal
-- Immer: git add, commit, push, Actions Tab pruefen
+- Anthropic API Key: sk-ant-api03-...
 - Cloudflare Token muss manchmal direkt per export gesetzt werden
+- Immer: git add, commit, push, Actions Tab pruefen

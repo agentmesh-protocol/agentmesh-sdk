@@ -1,2 +1,4 @@
 from agentmesh.adapters.langchain import LangChainAdapter
-__all__ = ["LangChainAdapter"]
+from agentmesh.adapters.autogen import AutoGenAdapter
+
+__all__ = ["LangChainAdapter", "AutoGenAdapter"]

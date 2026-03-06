@@ -13,4 +13,4 @@ setup(
 
 Commit message:
 ```
-build: add setup.py
+fix: remove markdown artifacts from setup.py

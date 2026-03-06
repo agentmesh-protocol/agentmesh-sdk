@@ -14,7 +14,7 @@ class LLMAgent(Agent):
     def create(cls, name: str, system_prompt: str = None) -> "LLMAgent":
         return cls(name, system_prompt)
 
-    def receive_and_respond(self, msg: AgentMessage) -> AgentMessage:
+    def receive_and_respond(self, msg: AgentMessage) -> str:
         if not self.verify(msg):
             raise ValueError("Message signature invalid")
 
@@ -27,5 +27,4 @@ class LLMAgent(Agent):
             ]
         )
 
-        reply_text = response.content[0].text
-        return self.send(to=msg.from_agent, intent=reply_text)
+        return response.content[0].text

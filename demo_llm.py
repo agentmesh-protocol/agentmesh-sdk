@@ -22,5 +22,5 @@ print(f"Alice asks: {msg.body['intent_text']}\n")
 
 reply = bob.receive_and_respond(msg)
 
-print(f"Bob replies: {reply.body['intent_text']}")
+print(f"Bob replies: {reply}")
 print(f"\n✓ Erste echte LLM Agent-Kommunikation erfolgreich.")

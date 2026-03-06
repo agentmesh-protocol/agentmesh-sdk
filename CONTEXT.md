@@ -24,11 +24,23 @@ Fertig:
 - LLMAgent mit echter Claude API
 - GatewayClient SDK verbunden mit Cloudflare
 - KV Storage persistent in Cloudflare
-- LangChain Adapter fuer bestehende Agents
+- LangChain Adapter
+- AutoGen Adapter
+- CrewAI Adapter
+- Professionelles README mit Badges und Quickstart
 - 15 Tests alle gruen
 - GitHub Actions CI Pipeline gruen
 - Cloudflare Gateway live im Internet
 - Alle Dependencies sauber in setup.py
+
+## Unterstuetzte Frameworks
+
+| Framework | Adapter | Klasse |
+|-----------|---------|--------|
+| Nativer AgentMesh | eingebaut | Agent, LLMAgent |
+| LangChain | LangChainAdapter | agentmesh.adapters |
+| AutoGen | AutoGenAdapter | agentmesh.adapters |
+| CrewAI | CrewAIAdapter | agentmesh.adapters |
 
 ## Gateway
 
@@ -42,21 +54,26 @@ Endpoints:
 ## SDK Struktur
 
 agentmesh/__init__.py
-agentmesh/identity.py          - AgentIdentity, Ed25519
-agentmesh/message.py           - AgentMessage, RFC-001
-agentmesh/agent.py             - Agent Klasse
-agentmesh/registry.py          - AgentRegistry, RFC-002
-agentmesh/llm_agent.py         - LLMAgent mit Claude API
-agentmesh/gateway.py           - GatewayClient HTTP
+agentmesh/identity.py
+agentmesh/message.py
+agentmesh/agent.py
+agentmesh/registry.py
+agentmesh/llm_agent.py
+agentmesh/gateway.py
 agentmesh/adapters/__init__.py
-agentmesh/adapters/langchain.py - LangChain Adapter
+agentmesh/adapters/langchain.py
+agentmesh/adapters/autogen.py
+agentmesh/adapters/crewai.py
 tests/test_agent.py
 tests/test_registry.py
-demo.py                        - lokale Demo
-demo_llm.py                    - Claude API Demo
-demo_gateway.py                - Gateway Demo
-demo_langchain.py              - LangChain Demo
+demo.py
+demo_llm.py
+demo_gateway.py
+demo_langchain.py
+demo_autogen.py
+demo_crewai.py
 setup.py
+README.md
 .github/workflows/ci.yml
 
 ## Dependencies
@@ -67,13 +84,15 @@ anthropic>=0.18.0
 langchain>=0.1.0
 langchain-anthropic>=0.1.0
 langchain-core>=0.1.0
+pyautogen
+crewai
 
 ## Naechste Schritte
 
-1. README ausbauen - Projekt professionell praesentieren
+1. Twitter/X Build in Public starten
 2. RFC-003 Trust Score Verifikation
-3. Twitter/X Build in Public starten
-4. AutoGen Adapter - weitere Frameworks einbinden
+3. pip install agentmesh auf PyPI veroeffentlichen
+4. Erste externe Contributors gewinnen
 
 ## Wichtige Regeln
 

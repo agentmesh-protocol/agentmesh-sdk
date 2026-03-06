@@ -45,3 +45,13 @@ class GatewayClient:
         )
         response.raise_for_status()
         return response.json()
+
+    def update_trust(self, uri: str, delta: float) -> dict:
+        response = self.session.post(
+            f"{self.gateway_url}/v1/trust",
+            json={"uri": uri, "delta": delta}
+        )
+        if response.status_code == 404:
+            return {"success": False, "error": "trust endpoint not yet live"}
+        response.raise_for_status()
+        return response.json()
